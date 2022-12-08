@@ -28,7 +28,7 @@
 	
 	<!-- 건수조회 -->
 	<select id="count" resultType="int">
-		SELECT COUNT(*) TBL_BOARD
+		SELECT COUNT(*) FROM TBL_BOARD
 		<include refid="condition"/>
 	</select>
 	
@@ -45,4 +45,15 @@
 	</insert>
 	
 	<!-- 수정 -->
+	<update id= "updateBoard" parameterType="BoardVO">
+		UPDATE TBL_BOARD
+		SET TITLE = #{title}, CONTENT = #{content}, UPDATEDATE = SYSDATE
+		WHERE BNO = #{bno}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteBoard" parameterType="BoardVO">
+		DELETE FROM TBL_BOARD
+		WHERE BNO = #{bno}
+	</delete>
 </mapper>
