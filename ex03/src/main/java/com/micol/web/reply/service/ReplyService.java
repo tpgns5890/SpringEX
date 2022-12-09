@@ -4,9 +4,13 @@ import java.util.List;
 
 public interface ReplyService {
 
-	//게시글번호(bno)로 전체조회
-	List<ReplyVO> getRepAll(ReplyVO vo);
-	//등록
+	public int register(ReplyVO vo);
 	
-	//삭제
+	public ReplyVO get(Long rno);
+	
+	public int modify(ReplyVO vo);
+	
+	public int remove(Long rno);
+	
+	public List<ReplyVO> getList(Long bno);
 }
