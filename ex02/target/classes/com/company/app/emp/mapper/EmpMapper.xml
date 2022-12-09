@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.company.app.emp.EmpMapper">
+<mapper namespace="com.company.app.emp.mapper.EmpMapper">
 
 	<sql id="condition">
 		<where>
-			<if test="departmentId != null">
+			<if test="departmentId != null and !departmentId.equals('')">
 				DEPARTMENT_ID = #{departmentId}
 			</if>
-			<if test="firstName">
+			<if test="firstName and firstName != ''">
 				AND FIRST_NAME LIKE '%' || #{firstName} || '%'
 			</if>
 			<if test="employeeIds != null">
@@ -32,7 +32,7 @@
 	</select>
 
 	<!-- 단건조회 -->
-	<select id="getEmp" resultType="com.company.app.emp.EmpVO"
+	<select id="getEmp" resultType="EmpVO"
 		parameterType="string">
 		SELECT *
 		FROM EMPLOYEES
@@ -49,16 +49,31 @@
 		HIRE_DATE, JOB_ID)
 		VALUES(#{employeeId}, #{firstName}, #{lastName}, #{email}, #{hireDate}, #{jobId})
 	</insert>
-
+	
+	<!-- 수정 -->
 	<update id="updateName" parameterType="empVO">
 		UPDATE EMPLOYEES
 		SET FIRST_NAME = #{first_name}
 		WHERE EMPLOYEE_ID = #{employee_id}
 	</update>
 
+	<!-- 전체조회 -->
 	<select id="getDeptAll" resultType="map">
 		select department_id "departmentId",
 		department_name "departmentName"
 		from departments
 	</select>
+	
+	<!-- 매니저 여부확인 -->
+	<select id="getManagerCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM EMPLOYEES
+		WHERE MANAGER_ID = #{value}
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="deleteEmp" parameterType="string">
+		DELETE FROM EMPLOYEES
+		WHERE EMPLOYEE_ID = #{value}
+	</delete>
 </mapper>

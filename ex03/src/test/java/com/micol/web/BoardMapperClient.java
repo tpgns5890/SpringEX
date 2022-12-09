@@ -18,7 +18,7 @@ public class BoardMapperClient {
 	@Autowired SqlSession mybatis;
 	@Autowired BoardMapper mapper;
 	
-	//@Test
+	@Test
 	public void getBoardAll() {
 		BoardVO vo = new BoardVO();
 		//vo.setTitle("1");
@@ -45,30 +45,30 @@ public class BoardMapperClient {
 	//@Test
 	public void insertBoard() {
 		BoardVO vo = new BoardVO();
-		vo.setTitle("테스트7");
-		vo.setContent("테스트내용7");
+		vo.setTitle("�뀒�뒪�듃7");
+		vo.setContent("�뀒�뒪�듃�궡�슜7");
 		vo.setWriter("user07");
 		
 		int result = mapper.insertBoard(vo);
-		System.out.println(result + "건 입력됨");
+		System.out.println(result + "嫄� �엯�젰�맖");
 	}
 	
 	//@Test
 	public void updateBoard() {
 		BoardVO vo = new BoardVO();
 		vo.setBno(7);
-		vo.setTitle("테스트 제목7");
-		vo.setContent("테스트내용07");
+		vo.setTitle("�뀒�뒪�듃 �젣紐�7");
+		vo.setContent("�뀒�뒪�듃�궡�슜07");
 		
 		int result = mapper.updateBoard(vo);
-		System.out.println(result + "건 수정됨");
+		System.out.println(result + "嫄� �닔�젙�맖");
 	}
 	
-	@Test
+	//@Test
 	public void deleteBoard() {
 		BoardVO vo = new BoardVO();
 		vo.setBno(7);
 		int result = mapper.deleteBoard(vo);
-		System.out.println(result + "건 삭제됨");
+		System.out.println(result + "嫄� �궘�젣�맖");
 	}
 }

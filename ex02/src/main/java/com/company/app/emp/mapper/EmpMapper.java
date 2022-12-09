@@ -1,9 +1,12 @@
-package com.company.app.emp;
+package com.company.app.emp.mapper;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
+
+import com.company.app.emp.service.EmpVO;
 
 public interface EmpMapper {
 	
@@ -12,6 +15,11 @@ public interface EmpMapper {
 	int updateName(EmpVO vo);
 	int insertEmp(EmpVO vo);
 	int count(EmpVO vo);
+	
+	//매니저여부확인
+	int getManagerCheck(String id);
+	//삭제
+	int deleteEmp(String id);
 	
 	@Select("select * from departments")
 	public List<Map<String,Object>> getDept();

@@ -35,6 +35,9 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	  <property name="basePackage" value="com.micol.web.board" />
 	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	  <property name="basePackage" value="com.micol.web.reply" />
+	</bean>
 	<!-- <mybatis-spring:scan base-package="com.yedam.app.emp"/>  -->
 	
 </beans>
