@@ -5,17 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.app.common.Paging;
 import com.company.app.emp.mapper.EmpMapper;
 import com.company.app.emp.service.EmpService;
 import com.company.app.emp.service.EmpVO;
 
-@Service //ºóµî·Ï, Æ®·£Àè¼Ç Ã³¸®
+@Service //ï¿½ï¿½ï¿½ï¿½, Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 public class EmpServiceImpl implements EmpService{
 
 	@Autowired EmpMapper empMapper;
 	
 	@Override
-	public List<EmpVO> getEmpAll(EmpVO vo) {
+	public List<EmpVO> getEmpAll(EmpVO vo, Paging paging) {
+		paging.setTotalRecord(empMapper.count(vo)); //start, end
+		vo.setFirst(paging.getFirst());
+		vo.setLast(paging.getLast());
 		return empMapper.getEmpAll(vo);
 	}
 
@@ -38,10 +42,10 @@ public class EmpServiceImpl implements EmpService{
 
 	@Override
 	public int deleteEmp(String id) {
-		//100»èÁ¦ -> manager(ÂüÁ¶)
-		//¸Å´ÏÀúÀÎÁö È®ÀÎ
+		//100ï¿½ï¿½ï¿½ï¿½ -> manager(ï¿½ï¿½ï¿½ï¿½)
+		//ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		if(empMapper.getManagerCheck(id)==0) {
-			//¾Æ´Ï¸é »èÁ¦
+			//ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 			int result = empMapper.deleteEmp(id);
 			return result;
 		}

@@ -17,4 +17,6 @@ public class EmpVO {
 	
 	List<String> employeeIds;
 	
+	Integer first = 1;
+	Integer last = 10;
 }

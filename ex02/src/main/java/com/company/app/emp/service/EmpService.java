@@ -2,19 +2,21 @@ package com.company.app.emp.service;
 
 import java.util.List;
 
+import com.company.app.common.Paging;
+
 public interface EmpService {
-	//ÀüÃ¼Á¶È¸
-	List<EmpVO> getEmpAll(EmpVO vo);
+	//ï¿½ï¿½Ã¼ï¿½ï¿½È¸
+	List<EmpVO> getEmpAll(EmpVO vo, Paging paging);
 	
-	//´Ü°ÇÁ¶È¸
+	//ï¿½Ü°ï¿½ï¿½ï¿½È¸
 	EmpVO getEmp(String id);
 	
-	//µî·Ï
+	//ï¿½ï¿½ï¿½
 	int insertEmp(EmpVO vo);
 	
-	//¼öÁ¤
+	//ï¿½ï¿½ï¿½ï¿½
 	int updateName(EmpVO vo);
 	
-	//»èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½
 	int deleteEmp(String id);
 }

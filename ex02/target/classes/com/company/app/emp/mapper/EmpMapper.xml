@@ -27,8 +27,13 @@
 
 	<!-- 전체조회 -->
 	<select id="getEmpAll" resultType="empVO">
-		SELECT * FROM EMPLOYEES
-		<include refid="condition"/>
+	
+		SELECT * FROM(SELECT ROWNUM RN, A.* FROM (
+			SELECT * FROM EMPLOYEES
+			<include refid="condition"/>	
+		<![CDATA[
+		) A WHERE ROWNUM <= #{last} ) WHERE RN >= #{first}
+		]]>
 	</select>
 
 	<!-- 단건조회 -->
