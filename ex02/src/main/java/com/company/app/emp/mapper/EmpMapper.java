@@ -3,8 +3,8 @@ package com.company.app.emp.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
 
 import com.company.app.emp.service.EmpVO;
 
@@ -16,14 +16,18 @@ public interface EmpMapper {
 	int insertEmp(EmpVO vo);
 	int count(EmpVO vo);
 	
-	//¸Å´ÏÀú¿©ºÎÈ®ÀÎ
+	//ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½
 	int getManagerCheck(String id);
-	//»èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½
 	int deleteEmp(String id);
 	
 	@Select("select * from departments")
 	public List<Map<String,Object>> getDept();
 	public List<Map<String,Object>> getDeptAll();
 	
+	@Insert("insert into tbl_sample1 (col1) values (#{data})")
+	public int insertCol1(String data);
 	
+	@Insert("insert into tbl_sample2 (col2) values (#{data})")
+	public int insertCol2(String data);
 }

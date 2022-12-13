@@ -19,4 +19,8 @@ public interface EmpService {
 	
 	//����
 	int deleteEmp(String id);
+	
+	int addData(String data);
+	
+	
 }
