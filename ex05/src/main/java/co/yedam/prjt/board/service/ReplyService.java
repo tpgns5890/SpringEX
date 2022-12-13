@@ -8,7 +8,7 @@ public interface ReplyService {
 	
 	public ReplyVO get(Long rno);
 	
-	public int modify(ReplyVO vo);
+	public ReplyVO modify(ReplyVO vo);
 	
 	public int remove(Long rno);
 	

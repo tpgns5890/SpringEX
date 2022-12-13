@@ -14,12 +14,10 @@ import co.yedam.prjt.common.Paging;
 import co.yedam.prjt.emp.mapper.EmpMapper;
 import co.yedam.prjt.emp.service.EmpService;
 import co.yedam.prjt.emp.service.EmpVO;
-import lombok.extern.log4j.Log4j;
 
 
 @Controller
 @RequestMapping("/emp")
-@Log4j
 public class EmpController {
 	@Autowired EmpService empService;
 	@Autowired EmpMapper mapper;

@@ -24,7 +24,13 @@ public class ReplyController {
 	public @ResponseBody List<ReplyVO> List(@PathVariable Long bno){
 		return replyService.getList(bno);
 	}
-
+	//단건조회
+	@GetMapping("/reply/{rno}")
+	public ReplyVO reply(ReplyVO vo, @PathVariable Long rno) {
+		vo.setRno(rno);
+		return replyService.get(rno);
+	}
+		
 	//등록
 	@PostMapping("/replys")
 	public ReplyVO insert(ReplyVO vo) {
@@ -33,8 +39,8 @@ public class ReplyController {
 	}
 	
 	//수정
-	@PutMapping("/replys")
-	public ReplyVO update(@RequestBody ReplyVO vo) {
+	@PostMapping("/update")
+	public ReplyVO update(ReplyVO vo) {
 		replyService.modify(vo);
 		return vo;
 	}

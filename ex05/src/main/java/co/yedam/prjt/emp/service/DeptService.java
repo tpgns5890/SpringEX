@@ -2,8 +2,6 @@ package co.yedam.prjt.emp.service;
 
 import java.util.List;
 
-import co.yedam.prjt.common.Paging;
-
 public interface DeptService {
 	//전체조회
 	List<DeptVO> getDeptAll(DeptVO vo);

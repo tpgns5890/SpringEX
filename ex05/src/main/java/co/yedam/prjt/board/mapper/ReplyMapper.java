@@ -13,7 +13,7 @@ public interface ReplyMapper {
 	
 	public int delete(Long rno);
 	
-	public int update(ReplyVO reply);
+	public ReplyVO update(ReplyVO vo);
 	
 	public List<ReplyVO> getList(@Param("bno") Long bno);
 }

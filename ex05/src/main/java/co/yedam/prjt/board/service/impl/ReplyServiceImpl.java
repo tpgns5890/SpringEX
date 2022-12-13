@@ -30,7 +30,7 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public int modify(ReplyVO vo) {
+	public ReplyVO modify(ReplyVO vo) {
 		log.info("modify......" + vo);
 		return mapper.update(vo);
 	}
