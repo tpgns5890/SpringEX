@@ -117,8 +117,8 @@ body {
 </div>
 
 <div class="topnav">
-  <a href="${pageContext.request.contextPath }/add">도서등록</a>
-  <a href="${pageContext.request.contextPath }/list">도서목록조회/수정</a>
+  <a href="${pageContext.request.contextPath }/book/add">도서등록</a>
+  <a href="${pageContext.request.contextPath }/book/bookList">도서목록조회/수정</a>
   <a href="#">대여현황조회</a>
   <a href="#">홈으로</a>
 </div>

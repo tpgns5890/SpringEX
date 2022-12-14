@@ -28,7 +28,12 @@
 		SELECT * FROM BOOK_TBL_06 ORDER BY BOOK_NO
 	</select>
 	
-	<select id="getRentAll" resultType="hashmap">
-		select * from 
+	<select id="getRentAll" resultType="map">
+		SELECT A.BOOK_NO, A.BOOK_NAME, SUM(RENT_PRICE) RENT_PRICE, B.RENT_STATUS
+		FROM BOOK_TBL_06 A
+		JOIN RENT_TBL_06 B
+		ON A.BOOK_NO = B.BOOK_NO
+		GROUP BY A.BOOK_NO, A.BOOK_NAME, B.RENT_STATUS
+		ORDER BY A.BOOK_NO
 	</select>
 </mapper>

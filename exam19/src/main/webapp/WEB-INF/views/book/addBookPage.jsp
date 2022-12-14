@@ -21,7 +21,7 @@ $(function(){
 				$('[name="bookName"]').focus();
 			}else{
 				$.ajax({
-					url:path+'/books',
+					url:path+'/book/books',
 					method: "post",
 					data: $("#addBookForm").serialize()
 				}).then(res=>{

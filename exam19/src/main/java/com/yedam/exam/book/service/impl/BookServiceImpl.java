@@ -24,12 +24,12 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public List<BookVO> getBookAll() {
-		return mapper.getBookAll();
+	public List<BookVO> getBookAll(BookVO vo) {
+		return mapper.getBookAll(vo);
 	}
 
 	@Override
-	public HashMap<String, Object> getRentAll() {
+	public List<Map<String, Object>> getRentAll() {
 		return mapper.getRentAll();
 	}
 
