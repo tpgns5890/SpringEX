@@ -34,15 +34,19 @@ public class ReplyController {
 	//등록
 	@PostMapping("/replys")
 	public ReplyVO insert(ReplyVO vo) {
+		Long rno = vo.getRno();
 		replyService.register(vo);
-		return vo;
+		ReplyVO result = replyService.get(rno);
+		return result;
 	}
 	
 	//수정
-	@PostMapping("/update")
-	public ReplyVO update(ReplyVO vo) {
+	@PutMapping("/replys")
+	public ReplyVO update(@RequestBody ReplyVO vo) {
+		Long rno = vo.getRno();
 		replyService.modify(vo);
-		return vo;
+		ReplyVO result = replyService.get(rno);
+		return result;
 	}
 	
 	//삭제

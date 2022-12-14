@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="../resources/json.min.js"></script>
 
 
 <script type="text/javascript">
@@ -50,12 +51,13 @@ $(function(){
 			let id=$('[name=rno]').val();
 			let tr = $('[data-id='+id+']');
 			$.ajax({
-				url:path + '/update',
-				method: "post",
-				data: $("#reply-insert-form").serialize(),
+				url:path + '/replys',
+				method: "put",
+				data: JSON.stringify($("#reply-insert-form").serializeObject()),
+				contentType: "application/json"
 			}).then(res=>{
 				alert("댓글수정완료!");
-				tr.replaceWith(makeTr(res));
+				tr.replaceWith(updateTr(res));
 				$('[name="replyer"]').val('');
 				$('[name="reply"]').val('');
 				$("#btnInsert").css('display','');
@@ -106,6 +108,16 @@ $(function(){
 					</tr>`;
 		return tag;
 	}
+	function updateTr(reply){
+		let tag = `<tr data-id="\${reply.rno}">
+						<td>\${reply.replyer}</td>
+						<td>\${reply.updateDate}</td>
+						<td>\${reply.reply}</td>
+						<td><button id="btnSelect" value="\${reply.rno}">수정</button>
+						<td><button id="btnDelete" value="\${reply.rno}">삭제</button>
+					</tr>`;
+		return tag;
+	}
 })
 
 </script>
@@ -127,8 +139,8 @@ $(function(){
 			<label>내용</label><input	type="text" name="reply">
 			<input type="hidden" value="${board.bno }" name="bno">
 			<input type="hidden" value="" name="rno">
-			<button id="btnInsert" >등록</button>
-			<button id="btnUpdate" >수정</button>
+			<button type="button" id="btnInsert" >등록</button>
+			<button type="button" id="btnUpdate" >수정</button>
 			<button type="reset">초기화</button>
 
 		</form>
